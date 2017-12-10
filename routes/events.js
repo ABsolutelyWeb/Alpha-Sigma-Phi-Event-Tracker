@@ -54,9 +54,11 @@ router.post("/", middleware.loggedIn, function(req, res) {
 
     var venues = [];
     var temp;
-    for(var i = 0; i < req.body.venues.length; i++) {
-	    temp = req.body.venues[i].split(';');
-	    venues.push({id: temp[0], name: temp[1]});
+    if(req.body.venues) {
+        for(var i = 0; i < req.body.venues.length; i++) {
+    	    temp = req.body.venues[i].split(';');
+    	    venues.push({id: temp[0], name: temp[1]});
+        }
     }
     
     // Object blueprint
